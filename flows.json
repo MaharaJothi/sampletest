@@ -1,0 +1,184 @@
+[
+    {
+        "id": "610f883b65c5d543",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8ef198908eaef5ca",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2826c197041e2330",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "82d4b36715f46e3c",
+        "type": "inject",
+        "z": "610f883b65c5d543",
+        "name": "Bool",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "731691aafb87693f"
+            ]
+        ]
+    },
+    {
+        "id": "731691aafb87693f",
+        "type": "debug",
+        "z": "610f883b65c5d543",
+        "name": "echo",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "5992e1dcbe75ba6b",
+        "type": "inject",
+        "z": "8ef198908eaef5ca",
+        "name": "time",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "882077b4745c8306"
+            ]
+        ]
+    },
+    {
+        "id": "882077b4745c8306",
+        "type": "function",
+        "z": "8ef198908eaef5ca",
+        "name": "format time",
+        "func": "// Create a Date object from the payload\nvar date = new Date(msg.payload);\n// Change the payload to be a formatted Date string\nmsg.payload = date.toString();\n// Return the message so it can be sent on\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 100,
+        "wires": [
+            [
+                "33568e6da6fff5d3"
+            ]
+        ]
+    },
+    {
+        "id": "33568e6da6fff5d3",
+        "type": "debug",
+        "z": "8ef198908eaef5ca",
+        "name": "print time",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e108b948444912d2",
+        "type": "inject",
+        "z": "2826c197041e2330",
+        "name": "message",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hey there!!",
+        "payloadType": "str",
+        "x": 180,
+        "y": 120,
+        "wires": [
+            [
+                "f77dc31335e2df3e"
+            ]
+        ]
+    },
+    {
+        "id": "f77dc31335e2df3e",
+        "type": "debug",
+        "z": "2826c197041e2330",
+        "name": "print message",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 120,
+        "wires": []
+    }
+]
